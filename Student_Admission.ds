@@ -1,0 +1,848 @@
+/*
+ * Author       : keerthimathi.a.2024.cse_r941
+ * Generated on : 10-Nov-2026 10:58:13
+ * Version      : 1.0
+ */
+ application "Student Admission"
+ {
+ 	date format = "dd-MMM-yyyy"
+ 	time zone = "Asia/Kolkata"
+ 	time format = "24-hr"
+
+ 	forms
+	{
+		form Admission_Enquiry_Form
+		{
+			displayname = "Admission Enquiry Form"
+			success message = "Admission Enquiry Added Successfully"
+			Personal_Details
+			(
+				type = section
+				displayname = "Personal Details"
+	 			row = 1
+	 			column = 0   
+				width = medium
+			)
+			must have Student_Name
+			(
+    			type = name
+				displayname = "Student Name"
+     			prefix
+     			(
+	     			 type = prefix
+	     			 displayname ="Prefix"
+	     			 visibility = false
+	     			 value = {"Mr.","Mrs.","Ms."}
+     			) 
+     			first_name
+     			(
+	     			 type = first_name
+	     			 displayname ="First Name"
+     			) 
+     			last_name
+     			(
+	     			 type = last_name
+	     			 displayname ="Last Name"
+     			) 
+     			suffix
+     			(
+	     			 type = suffix
+	     			 displayname ="Suffix"
+	     			 visibility = false
+     			) 
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Date_Of_Birth
+			(
+    			type = date
+				displayname = "Date Of Birth"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			must have Gender
+			(
+				type = radiobuttons
+				maxchar = 100
+				values = {"Male","Female","Other"}
+				layout = 3
+	 			row = 1
+	 			column = 1   
+				width = medium
+			)
+			Contact_Details
+			(
+				type = section
+				displayname = "Contact Details"
+	 			row = 2
+	 			column = 0   
+				width = medium
+			)
+			must have Email_Address
+			(
+    			type = email
+				displayname = "Email Address"
+				maxchar = 80
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			must have Contact_Number
+			(
+    			type = phonenumber
+				displayname = "Contact Number"
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Residential_Address
+			(
+    			type = address
+				displayname = "Residential Address"
+     			capture_coordinates = true
+     			adjust_using_map = true
+     			address_line_1
+     			(
+	     			  type = address_line_1
+	     			  displayname = "Address Line 1"
+     			) 
+     			address_line_2
+     			(
+	     			  type = address_line_2
+	     			  displayname = "Address Line 2"
+     			) 
+     			district_city
+     			(
+	     			  type = district_city
+	     			  displayname = "City / District"
+     			) 
+     			state_province
+     			(
+	     			  type = state_province
+	     			  displayname = "State / Province"
+     			) 
+     			postal_Code
+     			(
+	     			  type = postal_Code
+	     			  displayname = "Postal Code"
+     			) 
+     			country
+     			(
+	     			  type = country
+	     			  displayname = "Country"
+     			) 
+     			latitude
+     			(
+	     			  type = latitude
+	     			  displayname = "latitude"
+     			) 
+     			longitude
+     			(
+	     			  type = longitude
+	     			  displayname = "longitude"
+     			) 
+	 			row = 2
+	 			column = 1   
+				width = medium
+			)
+			Guardian_Academic_Details
+			(
+				type = section
+				displayname = "Guardian & Academic Details"
+	 			row = 3
+	 			column = 0   
+				width = medium
+			)
+			Guardian_Name
+			(
+    			type = text
+				displayname = "Guardian Name"
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Class_XII_Percentage
+			(
+				type = number
+				displayname = "Class XII Percentage"
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			must have Preferred_Course
+			(
+				type = picklist
+				displayname = "Preferred Course"
+				maxchar = 100
+				values = {"Computer Science","Information Technology","Electronics","Mechanical Engineering","Civil Engineering","Business Administration","Design","Hospitality Management"}
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Areas_Of_Interest
+			(
+				type = list	
+				displayname = "Areas Of Interest"
+				values = {"Programming","Web Development","Mobile App Development","Data Science","AI/ML","Cybersecurity","Cloud Computing","UI/UX Design","Digital Marketing","Event Management"}
+				height = 13px
+	 			row = 3
+	 			column = 1   
+				width = medium
+			)
+			Scheduling_Consent
+			(
+				type = section
+				displayname = "Scheduling & Consent"
+	 			row = 4
+	 			column = 0   
+				width = medium
+			)
+			Additional_Remarks
+			(
+    			type = textarea
+				displayname = "Additional Remarks"
+				height = 13px
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Preferred_Counselling_Time
+			(
+    			type = time
+				displayname = "Preferred Counselling Time"
+				mins_displayinterval = 15
+				timedisplayoptions = "hh:mm:ss" 
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			must have Terms_Agreement
+			(
+    			type = checkbox
+				displayname = "Terms Agreement"
+				initial value = false
+	 			row = 4
+	 			column = 1   
+				width = medium
+			)
+			Document_Uploads
+			(
+				type = section
+				displayname = "Document Uploads"
+				visibility = true
+	 			row = 5
+	 			column = 0   
+				width = medium
+			)
+			must have Admission_Form_Copy
+			(
+    			type = upload file
+				displayname = "Admission Form Copy"
+				browse = local_drive
+				allowed file formats = {"pdf","doc","docx"}
+	 			row = 5
+	 			column = 1   
+				width = medium
+			)
+			must have ID_Proof
+			(
+    			type = upload file
+				displayname = "ID Proof"
+				browse = local_drive
+				allowed file formats = {"jpg","pdf","png"}
+	 			row = 5
+	 			column = 1   
+				width = medium
+			)
+			must have Address_Proof
+			(
+    			type = upload file
+				displayname = "Address Proof"
+				browse = local_drive
+				allowed file formats = {"jpg","pdf","png"}
+	 			row = 5
+	 			column = 1   
+				width = medium
+			)
+			Academic_Transcripts
+			(
+    			type = upload file
+				displayname = "Academic Transcripts"
+				browse = local_drive
+				allowed file formats = {"jpg","pdf","png"}
+	 			row = 5
+	 			column = 1   
+				width = medium
+			)
+			Financial_Details
+			(
+				type = section
+				displayname = "Financial Details"
+				visibility = true
+	 			row = 6
+	 			column = 0   
+				width = medium
+			)
+			must have Application_Fee
+			(
+				displayname = "Application Fee"
+				type = INR
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			Scholarship_Amount
+			(
+				displayname = "Scholarship Amount"
+				type = INR
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			must have Payment_Method
+			(
+				type = picklist
+				displayname = "Payment Method"
+				maxchar = 100
+				values = {"Credit Card","Debit Card","Net Banking","UPI","Cash"}
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			Payment_Date
+			(
+    			type = date
+				displayname = "Payment Date"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 6
+	 			column = 1   
+				width = medium
+			)
+			Advanced_Preferences
+			(
+				type = section
+				displayname = "Advanced Preferences"
+				visibility = true
+	 			row = 7
+	 			column = 0   
+				width = medium
+			)
+			Extracurricular_Activities
+			(
+				type = checkboxes	
+				displayname = "Extracurricular Activities"
+				values = {"Sports","Music","Dance","Drama","Debate","Art","Photography","Coding Club"}
+	 			row = 7
+	 			column = 1   
+				width = medium
+			)
+			must have Hostel_Requirement
+			(
+				type = radiobuttons
+				displayname = "Hostel Requirement"
+				maxchar = 100
+				values = {"Yes","No"}
+				layout = 2
+	 			row = 7
+	 			column = 1   
+				width = medium
+			)
+			Transport_Preference
+			(
+				type = picklist
+				displayname = "Transport Preference"
+				maxchar = 100
+				values = {"Morning Bus","Evening Bus","Self Transport","No Transport Needed"}
+	 			row = 7
+	 			column = 1   
+				width = medium
+			)
+			Special_Requirements
+			(
+    			type = textarea
+				displayname = "Special Requirements"
+				height = 8px
+	 			row = 7
+	 			column = 1   
+				width = medium
+			)
+			System_Tracking
+			(
+				type = section
+				displayname = "System & Tracking"
+				visibility = true
+	 			row = 8
+	 			column = 0   
+				width = medium
+			)
+			Admission_ID
+			(
+    			type = autonumber
+				displayname = "Admission ID"
+				start index = 1000
+	 			row = 8
+	 			column = 1   
+				width = medium
+			)
+			Application_Status
+			(
+    			type = text
+				displayname = "Application Status"
+	 			row = 8
+	 			column = 1   
+				width = medium
+    			Formula_Properties
+    			(
+    						value =  If(input.Terms_Agreement == true && Ifnull(input.Application_Fee,0) > 0,"Complete","Incomplete")
+    						visibility = false
+    						format = plaintext
+    			)
+			)
+			QR_Code
+			(
+				type = qrcode
+				displayname = "QR Code"
+				value = "${Admission_ID}"
+	 			row = 8
+	 			column = 1   
+				width = medium
+			)
+			Submission_Timestamp
+			(
+    			type = datetime
+				displayname = "Submission Timestamp"
+				timedisplayoptions = "hh:mm:ss"
+				alloweddays = 0,1,2,3,4,5,6
+	 			row = 8
+	 			column = 1   
+				width = medium
+			)
+	
+			actions
+			{
+				on add
+				{
+					submit
+					(
+   						type = submit
+   						displayname = "Submit"
+					)
+				}
+				on edit
+				{
+					update
+					(
+   						type = submit
+   						displayname = "Update"
+					)
+					cancel
+					(
+   						type = cancel
+   						displayname = "Cancel"
+					)
+				}
+			}
+		}
+	}
+	reports
+	{
+		default list All_Admission_Enquiries
+		{
+			displayName = "All Admission Enquiries"
+			show all rows from Admission_Enquiry_Form    
+		}
+		list Admission_Enquiry_Report
+		{
+			displayName = "Admission Enquiry Report"
+			show all rows from Admission_Enquiry_Form    
+			(
+				Student_Name  as "Student Name"
+	 			(
+	      			displayformat = [first_name+""+last_name]
+	 			)
+				Date_Of_Birth as "Date Of Birth"
+				(
+					displayformat = fulldate
+				)
+				Gender
+				Email_Address as "Email Address"
+				Contact_Number as "Contact Number"
+				(
+					displayformat = formattednumber 
+				)
+				Residential_Address  as "Residential Address"
+	 			(
+	      			enable = Link_to_Map,Show_As_Text
+	 			)
+				Guardian_Name as "Guardian Name"
+				Class_XII_Percentage as "Class XII Percentage"
+				Preferred_Course as "Preferred Course"
+				Areas_Of_Interest as "Areas Of Interest"
+				(
+					delimiter = comma
+				)
+				Preferred_Counselling_Time as "Preferred Counselling Time"
+				Additional_Remarks as "Additional Remarks"
+				(
+					foldcontent = disable
+				)
+				Terms_Agreement as "Terms Agreement"
+				(
+						displaytrue = "Yes"
+						displayfalse = "No"
+				)
+			)
+			sort by
+			(
+				Student_Name.first_name ascending
+			)
+		}
+	}
+
+
+
+
+	share_settings
+	{
+			"Read"
+			{
+				name = "Read"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have read permission for all components\n"
+			}
+			"Write"
+			{
+				name = "Write"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have write permission for all components\n"
+			}
+			"Developer"
+			{
+				name = "Developer"
+				type = Developer
+				permissions = {Chat:false, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "Developer Profile\n"
+			}
+			"Administrator"
+			{
+				name = "Administrator"
+				type = Users_Permissions
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This profile will have all the permissions.\n"
+			}
+			"Customer"
+			{
+				name = "Customer"
+				type = Customer_Portal
+				permissions = {Chat:true, Predefined:true, ApiAccess:true, PIIAccess:true, ePHIAccess:true}
+				description = "This is the default profile having only add and view permission.\n"
+			}
+			roles
+			{
+				"CEO"
+				{
+					description = "User belonging to this role can access data of all other users."
+				}
+			}
+	}
+
+	customize
+	{
+		icon
+		{
+			text = "SA"
+			background color = "theme"
+			foreground color = "#ffffff"
+		}
+	}
+
+	web
+	{
+		forms
+		{
+			form Admission_Enquiry_Form
+			{
+				label placement = left
+			}
+		}
+		reports
+		{
+			report All_Admission_Enquiries
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Delete   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						datablock1
+						(
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+			report Admission_Enquiry_Report
+			{
+				quickview
+				(
+					layout
+					(
+						datablock1
+						(
+							fields
+							(
+								Student_Name as "Student Name"
+								Date_Of_Birth as "Date Of Birth"
+								Gender
+								Email_Address as "Email Address"
+								Contact_Number as "Contact Number"
+								Preferred_Course as "Preferred Course"
+								Class_XII_Percentage as "Class XII Percentage"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+							)
+						record
+						(
+							Edit   	   
+							Duplicate   	   
+							Delete   	   
+    					)
+						)
+    				action
+    				(
+						on click
+						(
+							View Record   	   
+    					)
+						on right click
+						(
+							Edit   	   
+							Duplicate   	   
+							View Record   	   
+    					)
+     				)
+				)
+
+				detailview
+				(
+					layout
+					(
+						Admission_Details_Block
+						(
+		     				title = "Admission Details"
+							fields
+							(
+								Student_Name as "Student Name"
+								Date_Of_Birth as "Date Of Birth"
+								Gender
+								Email_Address as "Email Address"
+								Contact_Number as "Contact Number"
+								Residential_Address as "Residential Address"
+								Guardian_Name as "Guardian Name"
+								Class_XII_Percentage as "Class XII Percentage"
+								Preferred_Course as "Preferred Course"
+								Areas_Of_Interest as "Areas Of Interest"
+								Preferred_Counselling_Time as "Preferred Counselling Time"
+								Additional_Remarks as "Additional Remarks"
+								Terms_Agreement as "Terms Agreement"
+							)
+						)
+					)
+						menu
+						(
+							header
+							(
+								Edit 
+								Duplicate 
+								Delete 
+							)
+						)
+				)
+			}
+		}
+		menu
+		{
+			space Space
+			{
+				displayname = "Space"
+				icon = "objects-spaceship"
+
+				section Admission_Enquiries
+				{
+					displayname = "Admission Enquiries"
+					icon = "shopping-receipt"
+					form  Admission_Enquiry_Form
+					{
+						icon = "design-2-form"
+					}
+					report All_Admission_Enquiries
+					{
+						icon = "tech-desktop"
+					}
+					report Admission_Enquiry_Report
+					{
+						icon = "tech-desktop"
+					}
+				}
+				section ZC_App_Preferences
+				{
+					displayname = "App Preferences"
+					icon = "design-app"
+					systemcomponent
+					{
+						type = localization
+						displayname = "Language Selection"
+						icon = "education-language"
+					}
+					systemcomponent
+					{
+						type = connection
+						displayname = "Integrations"
+						icon = "tech-2-connection"
+					}
+				}
+				section ZC_Approvals
+				{
+					displayname = "Approvals"
+					icon = "ui-2-hourglass"
+					systemcomponent
+					{
+						type = approval
+						approval status = pending
+						displayname = "Pending Tasks"
+						icon = "ui-2-hourglass"
+					}
+					systemcomponent
+					{
+						type = approval
+						approval status = completed
+						displayname = "Completed Tasks"
+						icon = "design-todo"
+					}
+				}
+				section SharedAnalytics_Section
+				{
+					type = shared_user_report_section
+					displayname = "Reports"
+					icon = "business-chart-bar-33"
+				}
+			}
+			preference
+			{
+				icon
+				{
+					style = outline
+				}
+			}
+		}
+		customize
+		{
+			font = "lato"
+			color options
+			{
+				color = "11"
+			}
+			logo
+			{
+				preference = "app_icon"
+				placement = "left"
+			}
+		}
+	}
+	phone
+	{
+		customize
+		{
+			layout = twocolumn
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = chryslerpurple
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	tablet
+	{
+		customize
+		{
+			layout = slidingpane
+			font = "default"
+			style = "3"
+			color options
+			{
+				color = yellow
+			}
+			logo
+			{
+				preference = "none"
+			}
+		}
+	}
+	translation
+{
+{"Language_Settings":{"LANGAGUE_WITH_LOGIN":"browser"}}
+}
+}
